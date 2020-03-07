@@ -1,11 +1,16 @@
 package com.dcomp.redsaju.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -21,6 +26,12 @@ public class Produto implements Serializable {
 	private Double precoCusto;
 	private String descricao;
 	
+	@ManyToMany
+	@JoinTable(name = "PRODUTO_FORNECEDOR", 
+		joinColumns = @JoinColumn(name="produto_id"), 
+		inverseJoinColumns = @JoinColumn(name = "fornecedor_id"))
+	private List<Fornecedor> fornecedores = new ArrayList<>();
+	
 	public Produto() {
 	}
 
@@ -34,7 +45,15 @@ public class Produto implements Serializable {
 		this.precoCusto = precoCusto;
 		this.descricao = descricao;
 	}
+	
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
 
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
