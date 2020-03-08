@@ -1,20 +1,17 @@
 package com.dcomp.redsaju.domain;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-public class Fornecedor implements Serializable {
+public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,29 +19,30 @@ public class Fornecedor implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String cnpj;
+	private String cpf;
 	private String email;
-	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "fornecedores")
-	private List<Produto> produtos;
+	private Date dataNascimento;
+	private String numCartao;
 	
 	@OneToOne
 	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 	
-	public Fornecedor() {
+	public Cliente() {
 	}
 
-	public Fornecedor(Integer id, String nome, String cnpj, String email, Endereco endereco) {
+	public Cliente(Integer id, String nome, String cpf, String email, 
+			Date dataNascimento, String numCartao, Endereco endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.cnpj = cnpj;
+		this.cpf = cpf;
 		this.email = email;
+		this.dataNascimento = dataNascimento;
+		this.numCartao = numCartao;
 		this.endereco = endereco;
 	}
-
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -69,12 +67,12 @@ public class Fornecedor implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getCnpj() {
-		return cnpj;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getEmail() {
@@ -85,12 +83,20 @@ public class Fornecedor implements Serializable {
 		this.email = email;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getNumCartao() {
+		return numCartao;
+	}
+
+	public void setNumCartao(String numCartao) {
+		this.numCartao = numCartao;
 	}
 
 	@Override
@@ -109,7 +115,7 @@ public class Fornecedor implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Fornecedor other = (Fornecedor) obj;
+		Cliente other = (Cliente) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
