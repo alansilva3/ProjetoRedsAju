@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,9 @@ public class Carrinho implements Serializable {
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy = "carrinho")
+	private Venda venda;
+	
 	public Carrinho() {
 	}
 
@@ -38,6 +42,14 @@ public class Carrinho implements Serializable {
 		super();
 		this.id = id;
 		this.cliente = cliente;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
 	}
 
 	public Cliente getCliente() {

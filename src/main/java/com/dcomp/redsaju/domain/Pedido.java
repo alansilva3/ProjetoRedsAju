@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido implements Serializable {
@@ -27,10 +29,13 @@ public class Pedido implements Serializable {
 	private Funcionario funcionario;
 	
 	@ManyToMany
-	@JoinTable(name = "PEDIDO_ITEMPRODUTO", 
+	@JoinTable(name = "PEDIDO_ITEMPRODUTO",
 			joinColumns = @JoinColumn(name = "pedido_id"),
 			inverseJoinColumns = @JoinColumn(name = "itemproduto_id"))
 	private List<ItemProduto> itens = new ArrayList<>();
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy = "pedido")
+	private Compra compra;
 	
 	public Pedido() {
 	}
@@ -39,6 +44,14 @@ public class Pedido implements Serializable {
 		super();
 		this.id = id;
 		this.funcionario = funcionario;
+	}
+
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
 	}
 
 	public List<ItemProduto> getItens() {
