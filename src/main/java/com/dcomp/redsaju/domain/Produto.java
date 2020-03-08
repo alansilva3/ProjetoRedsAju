@@ -50,8 +50,8 @@ public class Produto implements Serializable {
 		return fornecedores;
 	}
 
-	public void setFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
+	public void setFornecedor(Fornecedor fornecedore) {
+		this.fornecedores.add(fornecedore);
 	}
 	
 	public String getNome() {

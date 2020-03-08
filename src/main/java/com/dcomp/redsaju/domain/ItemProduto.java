@@ -1,12 +1,15 @@
 package com.dcomp.redsaju.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -23,6 +26,9 @@ public class ItemProduto implements Serializable {
 	@JoinColumn(name = "produto_id")
 	private Produto produto;
 	
+	@ManyToMany(mappedBy = "itens")
+	private List<Carrinho> carrinhos = new ArrayList<>();
+	
 	public ItemProduto() {
 	}
 
@@ -31,6 +37,14 @@ public class ItemProduto implements Serializable {
 		this.id = id;
 		this.quantidade = quantidade;
 		this.produto = produto;
+	}
+	
+	public List<Carrinho> getCarrinhos() {
+		return carrinhos;
+	}
+
+	public void setCarrinhos(List<Carrinho> carrinhos) {
+		this.carrinhos = carrinhos;
 	}
 
 	public Integer getId() {
