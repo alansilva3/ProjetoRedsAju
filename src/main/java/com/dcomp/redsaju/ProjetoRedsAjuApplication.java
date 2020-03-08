@@ -90,7 +90,8 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 		enderecoRepository.saveAll(Arrays.asList(ender1, ender2, ender3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Cliente cli1 = new Cliente(null, "cliente1", "633.771.490-31", "cliente1@gmail.com", sdf.parse("01/01/2000") , "34927349283", ender1);
+		Cliente cli1 = new Cliente(null, "cliente1", "633.771.490-31", 
+				"cliente1@gmail.com", sdf.parse("01/01/2000") , "34927349283", ender1);
 		clienteRepository.save(cli1);
 		
 		Fornecedor forn1 = new Fornecedor(null, "Fornecedor1", "71.414.983/0001-50", "forn1@gmail.com", ender3);
