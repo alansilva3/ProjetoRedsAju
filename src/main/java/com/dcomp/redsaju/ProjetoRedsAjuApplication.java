@@ -11,10 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.dcomp.redsaju.domain.Cliente;
 import com.dcomp.redsaju.domain.Endereco;
 import com.dcomp.redsaju.domain.Fornecedor;
+import com.dcomp.redsaju.domain.ItemProduto;
 import com.dcomp.redsaju.domain.Produto;
 import com.dcomp.redsaju.repositories.ClienteRepository;
 import com.dcomp.redsaju.repositories.EnderecoRepository;
 import com.dcomp.redsaju.repositories.FornecedorRepository;
+import com.dcomp.redsaju.repositories.ItemProdutoRepository;
 import com.dcomp.redsaju.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -28,6 +30,8 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 	private EnderecoRepository enderecoRepository;
 	@Autowired
 	private ClienteRepository clienteRepository;
+	@Autowired
+	private ItemProdutoRepository itemProdutoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoRedsAjuApplication.class, args);
@@ -50,6 +54,10 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 		Fornecedor forn1 = new Fornecedor(null, "Fornecedor1", "71.414.983/0001-50", "forn1@gmail.com", ender3);
 		Fornecedor forn2 = new Fornecedor(null, "Fornecedor2", "64.325.527/0001-79", "forn2@gmail.com", ender2);
 		
+		ItemProduto item1 = new ItemProduto(null, 10, prod1);
+		ItemProduto item2 = new ItemProduto(null, 15, prod2);
+		ItemProduto item3 = new ItemProduto(null, 8, prod3);
+		
 		prod1.setFornecedores(Arrays.asList(forn1, forn2));
 		prod2.setFornecedores(Arrays.asList(forn1));
 		prod3.setFornecedores(Arrays.asList(forn2));
@@ -58,5 +66,6 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 		clienteRepository.saveAll(Arrays.asList(cli1));
 		fornecedorRepository.saveAll(Arrays.asList(forn1, forn2));
 		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
+		itemProdutoRepository.saveAll(Arrays.asList(item1, item2, item3));
 	}
 }

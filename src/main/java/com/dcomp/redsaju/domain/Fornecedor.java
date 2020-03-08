@@ -1,6 +1,7 @@
 package com.dcomp.redsaju.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Fornecedor implements Serializable {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "fornecedores")
-	private List<Produto> produtos;
+	private List<Produto> produtos = new ArrayList<>();
 	
 	@OneToOne
 	@JoinColumn(name = "endereco_id")
