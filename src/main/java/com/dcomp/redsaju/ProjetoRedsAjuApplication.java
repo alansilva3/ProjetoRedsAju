@@ -16,10 +16,16 @@ import com.dcomp.redsaju.domain.Endereco;
 import com.dcomp.redsaju.domain.Fornecedor;
 import com.dcomp.redsaju.domain.Funcionario;
 import com.dcomp.redsaju.domain.ItemProduto;
+import com.dcomp.redsaju.domain.NotaFiscalCompra;
+import com.dcomp.redsaju.domain.NotaFiscalVenda;
+import com.dcomp.redsaju.domain.PagamentoCompra;
+import com.dcomp.redsaju.domain.PagamentoVenda;
 import com.dcomp.redsaju.domain.Pedido;
 import com.dcomp.redsaju.domain.Produto;
 import com.dcomp.redsaju.domain.Venda;
 import com.dcomp.redsaju.domain.enums.Status;
+import com.dcomp.redsaju.domain.enums.StatusPag;
+import com.dcomp.redsaju.domain.enums.TipoPagamento;
 import com.dcomp.redsaju.repositories.CarrinhoRepository;
 import com.dcomp.redsaju.repositories.ClienteRepository;
 import com.dcomp.redsaju.repositories.CompraRepository;
@@ -27,6 +33,10 @@ import com.dcomp.redsaju.repositories.EnderecoRepository;
 import com.dcomp.redsaju.repositories.FornecedorRepository;
 import com.dcomp.redsaju.repositories.FuncionarioRepository;
 import com.dcomp.redsaju.repositories.ItemProdutoRepository;
+import com.dcomp.redsaju.repositories.NotaFiscalCompraRepository;
+import com.dcomp.redsaju.repositories.NotaFiscalVendaRepository;
+import com.dcomp.redsaju.repositories.PagamentoCompraRepository;
+import com.dcomp.redsaju.repositories.PagamentoVendaRepository;
 import com.dcomp.redsaju.repositories.PedidoRepository;
 import com.dcomp.redsaju.repositories.ProdutoRepository;
 import com.dcomp.redsaju.repositories.VendaRepository;
@@ -54,6 +64,14 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 	private CompraRepository compraRepository;
 	@Autowired
 	private VendaRepository vendaRepository;
+	@Autowired
+	private PagamentoVendaRepository pagamentoVendaRepository;
+	@Autowired
+	private PagamentoCompraRepository pagamentoCompraRepository;
+	@Autowired
+	private NotaFiscalVendaRepository notaFiscalVendaRepository;
+	@Autowired
+	private NotaFiscalCompraRepository notaFiscalCompraRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoRedsAjuApplication.class, args);
@@ -113,5 +131,19 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 		Venda venda1 = new Venda(null, new Date(System.currentTimeMillis()), 
 				new Date(System.currentTimeMillis()), Status.PENDENTE, carr1);
 		vendaRepository.save(venda1);
+		
+		PagamentoVenda pagVenda1 = new PagamentoVenda(null, new Date(System.currentTimeMillis()), 
+				new Date(System.currentTimeMillis()), TipoPagamento.BOLETO, StatusPag.PENDENTE);
+		pagamentoVendaRepository.save(pagVenda1);
+		
+		PagamentoCompra pagCompra1 = new PagamentoCompra(null, new Date(System.currentTimeMillis()), 
+				new Date(System.currentTimeMillis()), TipoPagamento.CARTAO, StatusPag.PENDENTE);
+		pagamentoCompraRepository.save(pagCompra1);
+		
+		NotaFiscalVenda nfVenda1 = new NotaFiscalVenda(null, pagVenda1);
+		notaFiscalVendaRepository.save(nfVenda1);
+		
+		NotaFiscalCompra nfCompra1 = new NotaFiscalCompra(null, pagCompra1);
+		notaFiscalCompraRepository.save(nfCompra1);
 	}
 }
