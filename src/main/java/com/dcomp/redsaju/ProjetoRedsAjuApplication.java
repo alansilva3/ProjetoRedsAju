@@ -14,6 +14,7 @@ import com.dcomp.redsaju.domain.Cliente;
 import com.dcomp.redsaju.domain.Compra;
 import com.dcomp.redsaju.domain.Endereco;
 import com.dcomp.redsaju.domain.Fornecedor;
+import com.dcomp.redsaju.domain.Fornecimento;
 import com.dcomp.redsaju.domain.Funcionario;
 import com.dcomp.redsaju.domain.ItemProduto;
 import com.dcomp.redsaju.domain.NotaFiscalCompra;
@@ -31,6 +32,7 @@ import com.dcomp.redsaju.repositories.ClienteRepository;
 import com.dcomp.redsaju.repositories.CompraRepository;
 import com.dcomp.redsaju.repositories.EnderecoRepository;
 import com.dcomp.redsaju.repositories.FornecedorRepository;
+import com.dcomp.redsaju.repositories.FornecimentoRepository;
 import com.dcomp.redsaju.repositories.FuncionarioRepository;
 import com.dcomp.redsaju.repositories.ItemProdutoRepository;
 import com.dcomp.redsaju.repositories.NotaFiscalCompraRepository;
@@ -72,6 +74,8 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 	private NotaFiscalVendaRepository notaFiscalVendaRepository;
 	@Autowired
 	private NotaFiscalCompraRepository notaFiscalCompraRepository;
+	@Autowired
+	private FornecimentoRepository fornecimentoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoRedsAjuApplication.class, args);
@@ -101,6 +105,9 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 		prod2.setFornecedor(forn1);
 		prod3.setFornecedor(forn2);
 		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
+		
+		Fornecimento fornec1 = new Fornecimento(null, prod2, forn1, new Date(), 5);
+		fornecimentoRepository.save(fornec1);
 		
 		ItemProduto item1 = new ItemProduto(null, 10, prod1);
 		ItemProduto item2 = new ItemProduto(null, 15, prod2);
@@ -132,12 +139,12 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 				new Date(System.currentTimeMillis()), Status.PENDENTE, carr1);
 		vendaRepository.save(venda1);
 		
-		PagamentoVenda pagVenda1 = new PagamentoVenda(null, new Date(System.currentTimeMillis()), 
-				new Date(System.currentTimeMillis()), TipoPagamento.BOLETO, StatusPag.PENDENTE);
+		PagamentoVenda pagVenda1 = new PagamentoVenda(null, new Date(), 
+				new Date(), TipoPagamento.BOLETO, StatusPag.PENDENTE);
 		pagamentoVendaRepository.save(pagVenda1);
 		
-		PagamentoCompra pagCompra1 = new PagamentoCompra(null, new Date(System.currentTimeMillis()), 
-				new Date(System.currentTimeMillis()), TipoPagamento.CARTAO, StatusPag.PENDENTE);
+		PagamentoCompra pagCompra1 = new PagamentoCompra(null, new Date(), 
+				new Date(), TipoPagamento.CARTAO, StatusPag.PENDENTE);
 		pagamentoCompraRepository.save(pagCompra1);
 		
 		NotaFiscalVenda nfVenda1 = new NotaFiscalVenda(null, pagVenda1);
