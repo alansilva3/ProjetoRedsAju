@@ -11,37 +11,42 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Carrinho implements Serializable {
+public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name = "funcionario_id")
+	private Funcionario funcionario;
+	
 	@ManyToMany
-	@JoinTable(name = "CARRINHO_ITEMPRODUTO", 
-			joinColumns = @JoinColumn(name = "carrinho_id"),
+	@JoinTable(name = "PEDIDO_ITEMPRODUTO", 
+			joinColumns = @JoinColumn(name = "pedido_id"),
 			inverseJoinColumns = @JoinColumn(name = "itemproduto_id"))
 	private List<ItemProduto> itens = new ArrayList<>();
 	
-	@OneToOne
-	@JoinColumn(name = "cliente_id")
-	private Cliente cliente;
-	
-	public Carrinho() {
+	public Pedido() {
 	}
 
-	public Carrinho(Integer id, Cliente cliente) {
+	public Pedido(Integer id, Funcionario funcionario) {
 		super();
 		this.id = id;
-		this.cliente = cliente;
+		this.funcionario = funcionario;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public List<ItemProduto> getItens() {
+		return itens;
+	}
+
+	public void setItem(ItemProduto item) {
+		this.itens.add(item);
 	}
 
 	public Integer getId() {
@@ -52,12 +57,12 @@ public class Carrinho implements Serializable {
 		this.id = id;
 	}
 
-	public List<ItemProduto> getItens() {
-		return itens;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setItem(ItemProduto item) {
-		this.itens.add(item);
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 	@Override
@@ -76,7 +81,7 @@ public class Carrinho implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carrinho other = (Carrinho) obj;
+		Pedido other = (Pedido) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -28,6 +28,8 @@ public class ItemProduto implements Serializable {
 	
 	@ManyToMany(mappedBy = "itens")
 	private List<Carrinho> carrinhos = new ArrayList<>();
+	@ManyToMany(mappedBy = "itens")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public ItemProduto() {
 	}
@@ -43,10 +45,18 @@ public class ItemProduto implements Serializable {
 		return carrinhos;
 	}
 
-	public void setCarrinhos(List<Carrinho> carrinhos) {
-		this.carrinhos = carrinhos;
+//	public void setCarrinho(Carrinho carrinho) {
+//		this.carrinhos.add(carrinho);
+//	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
+//	public void setPedido(Pedido pedido) {
+//		this.pedidos.add(pedido);
+//	}
+	
 	public Integer getId() {
 		return id;
 	}

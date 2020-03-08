@@ -12,13 +12,17 @@ import com.dcomp.redsaju.domain.Carrinho;
 import com.dcomp.redsaju.domain.Cliente;
 import com.dcomp.redsaju.domain.Endereco;
 import com.dcomp.redsaju.domain.Fornecedor;
+import com.dcomp.redsaju.domain.Funcionario;
 import com.dcomp.redsaju.domain.ItemProduto;
+import com.dcomp.redsaju.domain.Pedido;
 import com.dcomp.redsaju.domain.Produto;
 import com.dcomp.redsaju.repositories.CarrinhoRepository;
 import com.dcomp.redsaju.repositories.ClienteRepository;
 import com.dcomp.redsaju.repositories.EnderecoRepository;
 import com.dcomp.redsaju.repositories.FornecedorRepository;
+import com.dcomp.redsaju.repositories.FuncionarioRepository;
 import com.dcomp.redsaju.repositories.ItemProdutoRepository;
+import com.dcomp.redsaju.repositories.PedidoRepository;
 import com.dcomp.redsaju.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -36,6 +40,10 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 	private ItemProdutoRepository itemProdutoRepository;
 	@Autowired
 	private CarrinhoRepository carrinhoRepository;
+	@Autowired
+	private FuncionarioRepository funcionarioRepository;
+	@Autowired
+	private PedidoRepository pedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoRedsAjuApplication.class, args);
@@ -75,5 +83,18 @@ public class ProjetoRedsAjuApplication implements CommandLineRunner {
 		carr1.setItem(item1);
 		carr1.setItem(item2);
 		carrinhoRepository.save(carr1);
+		
+		Funcionario func1 = new Funcionario(null, "Funcionario1", "555.333.440-00");
+		Funcionario func2 = new Funcionario(null, "Funcionario2", "444.500.440-08");
+		funcionarioRepository.saveAll(Arrays.asList(func1, func2));
+		
+		Pedido ped1 = new Pedido(null, func1);
+		Pedido ped2 = new Pedido(null, func1);
+		Pedido ped3 = new Pedido(null, func2);
+		ped1.setItem(item1);
+		ped2.setItem(item1);
+		ped2.setItem(item2);
+		pedidoRepository.saveAll(Arrays.asList(ped1, ped2, ped3));
+		
 	}
 }

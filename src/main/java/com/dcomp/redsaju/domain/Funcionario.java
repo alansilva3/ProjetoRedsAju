@@ -4,44 +4,43 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Carrinho implements Serializable {
+public class Funcionario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToMany
-	@JoinTable(name = "CARRINHO_ITEMPRODUTO", 
-			joinColumns = @JoinColumn(name = "carrinho_id"),
-			inverseJoinColumns = @JoinColumn(name = "itemproduto_id"))
-	private List<ItemProduto> itens = new ArrayList<>();
+	private String nome;
+	private String cpf;
 	
-	@OneToOne
-	@JoinColumn(name = "cliente_id")
-	private Cliente cliente;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "funcionario")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
-	public Carrinho() {
+	public Funcionario() {
 	}
 
-	public Carrinho(Integer id, Cliente cliente) {
+	public Funcionario(Integer id, String nome, String cpf) {
 		super();
 		this.id = id;
-		this.cliente = cliente;
+		this.nome = nome;
+		this.cpf = cpf;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedidos.add(pedido);
 	}
 
 	public Integer getId() {
@@ -52,12 +51,20 @@ public class Carrinho implements Serializable {
 		this.id = id;
 	}
 
-	public List<ItemProduto> getItens() {
-		return itens;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setItem(ItemProduto item) {
-		this.itens.add(item);
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	@Override
@@ -76,7 +83,7 @@ public class Carrinho implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carrinho other = (Carrinho) obj;
+		Funcionario other = (Funcionario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
