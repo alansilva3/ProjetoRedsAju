@@ -25,7 +25,7 @@ public class Cliente implements Serializable {
 	private Date dataNascimento;
 	private String numCartao;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 	
