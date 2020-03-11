@@ -8,39 +8,9 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dcomp.redsaju.domain.Carrinho;
-import com.dcomp.redsaju.domain.Cliente;
-import com.dcomp.redsaju.domain.Compra;
-import com.dcomp.redsaju.domain.Endereco;
-import com.dcomp.redsaju.domain.Fornecedor;
-import com.dcomp.redsaju.domain.Fornecimento;
-import com.dcomp.redsaju.domain.Funcionario;
-import com.dcomp.redsaju.domain.ItemProduto;
-import com.dcomp.redsaju.domain.NotaFiscalCompra;
-import com.dcomp.redsaju.domain.NotaFiscalVenda;
-import com.dcomp.redsaju.domain.PagamentoCompra;
-import com.dcomp.redsaju.domain.PagamentoVenda;
-import com.dcomp.redsaju.domain.Pedido;
-import com.dcomp.redsaju.domain.Produto;
-import com.dcomp.redsaju.domain.Venda;
-import com.dcomp.redsaju.domain.enums.Status;
-import com.dcomp.redsaju.domain.enums.StatusPag;
-import com.dcomp.redsaju.domain.enums.TipoPagamento;
-import com.dcomp.redsaju.repositories.CarrinhoRepository;
-import com.dcomp.redsaju.repositories.ClienteRepository;
-import com.dcomp.redsaju.repositories.CompraRepository;
-import com.dcomp.redsaju.repositories.EnderecoRepository;
-import com.dcomp.redsaju.repositories.FornecedorRepository;
-import com.dcomp.redsaju.repositories.FornecimentoRepository;
-import com.dcomp.redsaju.repositories.FuncionarioRepository;
-import com.dcomp.redsaju.repositories.ItemProdutoRepository;
-import com.dcomp.redsaju.repositories.NotaFiscalCompraRepository;
-import com.dcomp.redsaju.repositories.NotaFiscalVendaRepository;
-import com.dcomp.redsaju.repositories.PagamentoCompraRepository;
-import com.dcomp.redsaju.repositories.PagamentoVendaRepository;
-import com.dcomp.redsaju.repositories.PedidoRepository;
-import com.dcomp.redsaju.repositories.ProdutoRepository;
-import com.dcomp.redsaju.repositories.VendaRepository;
+import com.dcomp.redsaju.domain.*;
+import com.dcomp.redsaju.domain.enums.*;
+import com.dcomp.redsaju.repositories.*;
 
 @Service
 public class DBService {
