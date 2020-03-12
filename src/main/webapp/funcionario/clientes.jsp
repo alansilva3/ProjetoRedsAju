@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="com.dcomp.redsaju.services.ClienteService,java.util.*,com.dcomp.redsaju.domain.*,com.dcomp.redsaju.resources.*" 
+<%@page contentType="text/html" import="com.dcomp.redsaju.services.ClienteService,java.util.*,com.dcomp.redsaju.domain.*,com.dcomp.redsaju.services.*" 
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +67,7 @@ pageEncoding="utf-8"%>
 				</thead>
 				<tbody>
 				<%
-				Cliente cliente = new ClienteResource().find(1);
+				Cliente cliente = new ClienteService().find(1);
 				%>
 				  <tr>
 					<td>1</td>

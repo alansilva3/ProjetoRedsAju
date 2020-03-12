@@ -1,15 +1,15 @@
 package com.dcomp.redsaju.controllers;
 
-import com.dcomp.redsaju.domain.Produto;
-import com.dcomp.redsaju.services.FuncionarioService;
-import com.dcomp.redsaju.services.ProdutoService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import com.dcomp.redsaju.domain.Produto;
+import com.dcomp.redsaju.services.ProdutoService;
 
 @RestController
 @RequestMapping(value = "/funcionario")
