@@ -37,7 +37,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 
-	          <li class="nav-item cta cta-colored"><a style="color: black;" href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+			  <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getItens().size()}]</a></li>
 			  <li class="nav-item cta cta-colored-login"><a href="#" style="color: black;" class="nav-link">Login</a></li>
 	        </ul>
 	      </div>
@@ -63,22 +63,23 @@
 						        <th>&nbsp;</th>
 						        <th>&nbsp;</th>
 						        <th>Produto</th>
-						        <th>PreÃ§o</th>
+						        <th>Preço</th>
 						        <th>Quantidade</th>
 						        <th>Total</th>
 						      </tr>
 						    </thead>
 						    <tbody>
+						    <c:forEach var="item" items="${carrinho.getItens()}">
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
 						        <td class="image-prod"><div class="img" style="background-image:url(images/product-9.jpg);"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>Uniforme Masculino Pain Gaming</h3>
+						        	<h3>${item.getProduto().nome}</h3>
 						        </td>
 						        
-						        <td class="price">R$ 129,90</td>
+						        <td class="price">${item.getProduto().precoMercado}</td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
@@ -89,25 +90,7 @@
 						        <td class="total">R$ 129,90</td>
 						      </tr><!-- END TR-->
 							 
-							  <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-10.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Uniforme Feminino Pain Gaming</h3>
-						        </td>
-						        
-						        <td class="price">R$ 129,90</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total">R$ 129,90</td>
-						      </tr><!-- END TR-->
+							  
 						      
 						    </tbody>
 						  </table>

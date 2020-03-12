@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="com.dcomp.redsaju.domain.*" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +38,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getItens().size()}]</a></li>
 			  <li class="nav-item cta cta-colored-login"><a href="./login/login.html" class="nav-link">Login</a></li>
 	        </ul>
 	      </div>
@@ -74,78 +76,29 @@
     	</div>
     	<div class="container-fluid">
     		<div class="row">
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-9.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Uniforme Masculino Pain Gaming</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>R$ 129,90</span></p>
-		    					</div>
-		    					
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Adicionar ao carrinho <i class="ion-ios-add ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
+    		<c:forEach var="produto" items="${produtos}">
+        	<div class="col-sm col-md-6 col-lg ftco-animate">
+                <div class="product">
+                    <a href="#" class="img-prod"><img class="img-fluid" src="../images/product-9.jpg"
+                                                      alt="Colorlib Template"></a>
+                    <div class="text py-3 px-3">
+      
+                        <h3><a href="#">${produto.nome}</a></h3>
+                        <div class="d-flex">
+                            <div class="pricing">
+                                <p class="price"><span>R$ ${produto.precoMercado}</span></p>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                            <a href="/${produto.codigo}" class="add-to-cart"><span>Adicionar ao carrinho <i class="ion-ios-add ml-1"></i></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-10.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Uniforme Feminino Pain Gaming</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>R$ 129,90</span></p>
-								</div>
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Adicionar ao carrinho <i class="ion-ios-add ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-11.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Camiseta Casual Pain Gaming</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>R$ 59,90</span></p>
-		    					</div>
-		    					
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Adicionar ao carrinho <i class="ion-ios-add ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-12.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Uniforme Masculino Flamengo</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>R$ 249,90</span></p>
-		    					</div>
-		    					
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Adicionar ao carrinho <i class="ion-ios-add ml-1"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-			</div>
     	</div>
     </section>
 
