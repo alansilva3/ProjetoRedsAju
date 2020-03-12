@@ -1,11 +1,10 @@
 package com.dcomp.redsaju.repositories;
 
+import com.dcomp.redsaju.domain.Fornecimento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dcomp.redsaju.domain.Fornecimento;
-
 @Repository
-public interface FornecimentoRepository extends JpaRepository<Fornecimento, Integer>{
+public interface FornecimentoRepository extends JpaRepository<Fornecimento, Integer> {
 
 }

@@ -1,11 +1,10 @@
 package com.dcomp.redsaju.repositories;
 
+import com.dcomp.redsaju.domain.NotaFiscalVenda;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.dcomp.redsaju.domain.NotaFiscalVenda;
-
 @Repository
-public interface NotaFiscalVendaRepository extends JpaRepository<NotaFiscalVenda, Integer>{
+public interface NotaFiscalVendaRepository extends JpaRepository<NotaFiscalVenda, Integer> {
 
 }
