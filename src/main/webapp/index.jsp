@@ -33,12 +33,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">RedsAju</a>
+	      <a class="navbar-brand" href="/">RedsAju</a>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getItens().size()}]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="/cart" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getQuantidade()}]</a></li>
 			  <li class="nav-item cta cta-colored-login"><a href="./login/login.html" class="nav-link">Login</a></li>
 	        </ul>
 	      </div>
