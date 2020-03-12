@@ -6,9 +6,6 @@ import com.dcomp.redsaju.services.exceptions.DataIntegrityException;
 import com.dcomp.redsaju.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,14 +17,9 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository repo;
 
-    public List<Produto> findAll() {
-        return repo.findAll();
-    }
-
-    //Busca todos os produtos usando paginação <findPage(0, 24, "nome", "ASC")>
-    public Page<Produto> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-        return repo.findAll(pageRequest);
+    public Produto insert(Produto obj) {
+        obj.setCodigo(null);
+        return repo.save(obj);
     }
 
     public Produto find(Integer id) {
@@ -36,9 +28,8 @@ public class ProdutoService {
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Produto.class.getName()));
     }
 
-    public Produto insert(Produto obj) {
-        obj.setCodigo(null);
-        return repo.save(obj);
+    public List<Produto> findAll() {
+        return repo.findAll();
     }
 
     public Produto update(Produto obj) {

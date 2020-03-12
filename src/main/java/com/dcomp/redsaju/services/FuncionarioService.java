@@ -17,7 +17,6 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repo;
 
-
     public Funcionario insert(Funcionario obj) {
         obj.setId(null);
         return repo.save(obj);
