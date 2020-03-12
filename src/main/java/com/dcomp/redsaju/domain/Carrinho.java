@@ -62,6 +62,29 @@ public class Carrinho implements Serializable {
     public void setItem(ItemProduto item) {
         this.itens.add(item);
     }
+    
+    public double getPreco() {
+    	double preco = 0;
+        for(int i = 0; i < this.itens.size(); i++) {
+        	int quantidade = this.itens.get(i).getQuantidade();
+        	double precoProduto = this.itens.get(i).getProduto().getPrecoMercado();
+        	
+        	preco += quantidade*precoProduto;
+        }
+        
+        return preco;
+    }
+    
+    public int getQuantidade() {
+    	int quantidade = 0;
+    	
+    	for(int i = 0; i < this.itens.size(); i++) {
+    		int quantidadeItem = this.itens.get(i).getQuantidade();
+    		quantidade += quantidadeItem;
+    	}
+    	
+    	return quantidade;
+    }
 
     @Override
     public int hashCode() {

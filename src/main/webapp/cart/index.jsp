@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="com.dcomp.redsaju.domain.*" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,12 +34,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a style="color: black;" class="navbar-brand" href="index.html">RedsAju</a>
+	      <a style="color: black;" class="navbar-brand" href="../">RedsAju</a>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 
-			  <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getItens().size()}]</a></li>
+			  <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getQuantidade()}]</a></li>
 			  <li class="nav-item cta cta-colored-login"><a href="#" style="color: black;" class="nav-link">Login</a></li>
 	        </ul>
 	      </div>
@@ -76,20 +78,20 @@
 						        <td class="image-prod"><div class="img" style="background-image:url(images/product-9.jpg);"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>${item.getProduto().nome}</h3>
+						        	<h3>${item.getProduto().getNome()}</h3>
 						        </td>
 						        
-						        <td class="price">${item.getProduto().precoMercado}</td>
+						        <td class="price">${item.getProduto().getPrecoMercado()}</td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+					             	<input type="text" name="quantity" class="quantity form-control input-number" value=${item.getQuantidade()} min="1" max="100">
 					          	</div>
 					          </td>
 						        
-						        <td class="total">R$ 129,90</td>
+						        <td class="total">R$ ${item.getQuantidade() * item.getProduto().getPrecoMercado()}</td>
 						      </tr><!-- END TR-->
-							 
+							 </c:forEach>
 							  
 						      
 						    </tbody>
@@ -103,17 +105,9 @@
     					<h3>Resumo do Carrinho</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
-    						<span>R$ 259,80</span>
-    					</p>
-    					<p class="d-flex">
-    						<span>Entrega</span>
-    						<span>R$ 0,00 (Frete Grátis)</span>
-    					</p>
-    					<hr>
-    					<p class="d-flex total-price">
-    						<span>Total</span>
-    						<span>R$ 259,80</span>
-    					</p>
+    						<span>R$ ${carrinho.getPreco()}</span>
+    					</p> 				
+    					
     				</div>
     				<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Prosseguir para o Pagamento</a></p>
     			</div>

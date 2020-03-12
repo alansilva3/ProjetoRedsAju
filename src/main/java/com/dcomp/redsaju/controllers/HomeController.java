@@ -24,11 +24,15 @@ public class HomeController {
     @RequestMapping(value = "/")
     public ModelAndView home(HttpSession session) {
     	
-    	if (session.getAttribute("cart") == null) {
+    	if (session.getAttribute("carrinho") == null) {
     		Carrinho carrinho = new Carrinho();
     		session.setAttribute("carrinho", carrinho);
     	}
     	
+    	Carrinho carrinho = (Carrinho) session.getAttribute("carrinho");
+    	
+    	List<ItemProduto> produtosCarrinho = carrinho.getItens();
+    	   	
     	
     	List<Produto> produtos = produtoService.findAll();
 
@@ -48,12 +52,25 @@ public class HomeController {
     	
     	Produto produto = produtoService.find(id);
     	
-    	ItemProduto item = new ItemProduto();
-    	item.setProduto(produto);
-    	item.setQuantidade(1);    	
+    	boolean achou = false;
+
+    	for(ItemProduto item : produtosCarrinho) {
+    		
+    		if(item.getProduto().equals(produto)) {
+    			achou = true;
+    			item.setQuantidade(item.getQuantidade()+1);
+    		}
+    		
+    	}
     	
-    	carrinho.setItem(item); 	
-    	
+    	if(achou == false) {
+    		ItemProduto item = new ItemProduto();
+        	item.setProduto(produto);
+        	item.setQuantidade(1);    	
+        	
+        	carrinho.setItem(item); 
+    	}
+
     	session.setAttribute("carrinho", carrinho);
     	
     	List<Produto> produtos = produtoService.findAll();
