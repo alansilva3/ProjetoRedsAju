@@ -22,6 +22,10 @@ public class Fornecimento implements Serializable {
     private Fornecedor fornecedor;
     private Date data;
     private Integer quantidade;
+    
+    public Fornecimento() {
+        
+    }
 
     public Fornecimento(Integer id, Produto produto, Fornecedor fornecedor, Date data, Integer quantidade) {
         super();

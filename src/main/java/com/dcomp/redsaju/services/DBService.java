@@ -71,8 +71,10 @@ public class DBService {
         prod3.setFornecedor(forn2);
         produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
 
-        Fornecimento fornec1 = new Fornecimento(null, prod2, forn1, new Date(), 5);
-        fornecimentoRepository.save(fornec1);
+        Fornecimento fornec1 = new Fornecimento(null, prod1, forn1, new Date(), 5);
+        Fornecimento fornec2 = new Fornecimento(null, prod2, forn1, new Date(), 5);
+        Fornecimento fornec3 = new Fornecimento(null, prod3, forn2, new Date(), 5);
+        fornecimentoRepository.saveAll(Arrays.asList(fornec1, fornec2, fornec3));
 
         ItemProduto item1 = new ItemProduto(null, 10, prod1);
         ItemProduto item2 = new ItemProduto(null, 15, prod2);
@@ -93,7 +95,7 @@ public class DBService {
         Pedido ped3 = new Pedido(null, func2);
         ped1.setItem(item1);
         ped2.setItem(item1);
-        ped2.setItem(item2);
+        ped3.setItem(item2);
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2, ped3));
 
         Compra compra1 = new Compra(null, new Date(System.currentTimeMillis()),

@@ -1,6 +1,7 @@
 package com.dcomp.redsaju.services;
 
 import com.dcomp.redsaju.domain.Fornecimento;
+import com.dcomp.redsaju.domain.Fornecedor;
 import com.dcomp.redsaju.repositories.FornecimentoRepository;
 import com.dcomp.redsaju.services.exceptions.DataIntegrityException;
 import com.dcomp.redsaju.services.exceptions.ObjectNotFoundException;
@@ -9,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
 
 @Service
@@ -29,6 +31,10 @@ public class FornecimentoService {
 
     public List<Fornecimento> findAll() {
         return repo.findAll();
+    }
+    
+    public List<Fornecimento> findByFornecedor(Fornecedor f) {
+        return repo.findByFornecedor(f);
     }
 
     public Fornecimento update(Fornecimento obj) {

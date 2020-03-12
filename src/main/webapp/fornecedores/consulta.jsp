@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.dcomp.redsaju.domain.*" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
@@ -55,8 +56,8 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h1 class="big">Fornecedores</h1>
-                    <h2 class="mb-4">Nossos Fornecedores</h2>
+                    <h1 class="big">COMPRAS</h1>
+                    <h2 class="mb-4">${fornecedor.nome}</h2>
                 </div>
             </div>
         </div>
@@ -65,27 +66,21 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Produtos Fornecidos</th>
-                        <th scope="col">Compras</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Data da Compra</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Valor Un.</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <c:forEach var="fornecedor" items="${fornecedores}">
+                    <c:forEach var="f" items="${fornecimentos}">
                         <tr>
-                            <td>${fornecedor.id}</td>
-                            <td>${fornecedor.nome}</td>
-                            <td>
-                                <select id="produtos_dropdown">
-                                    <c:forEach var="produto" items="${fornecedor.produtos}">
-                                        <option value="${produto.nome}">${produto.nome}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
-                            <td><a style="color: blue;" href="./consultar?fid=${fornecedor.id}">Consultar compras</a></td>
-                            <td><i style="color: orange;" class="fas fa-edit fa-lg"></i> <i>-</i> <i style="color: red;" class="fas fa-trash fa-lg"></i></td>
+                            <td>${f.id}</td>
+                            <td>${f.produto.nome}</td>
+                            <td><fmt:formatDate value="${f.data}" pattern="dd/MM/yyyy"/></td>
+                            <td>${f.quantidade}</td>
+                            <td><fmt:formatNumber value="${f.produto.precoCusto}" type="currency" currencySymbol="R$"/></td>
                         </tr>
                     </c:forEach>
                 </tbody>
