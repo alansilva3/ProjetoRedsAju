@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="" 
+<%@page contentType="text/html" import="com.dcomp.redsaju.services.ClienteService,java.util.*,com.dcomp.redsaju.domain.*,com.dcomp.redsaju.services.*" 
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +66,11 @@ pageEncoding="utf-8"%>
 				  </tr>
 				</thead>
 				<tbody>
+
+				<%
+				Cliente cliente = new ClienteService().find(1);
+				%>
+
 				  <tr>
 					<td>1</td>
 					<td>Adisiel Alemão Santos Silveira</td>
