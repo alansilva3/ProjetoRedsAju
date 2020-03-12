@@ -73,9 +73,9 @@
 						    <tbody>
 						    <c:forEach var="item" items="${carrinho.getItens()}">
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a href="/remove-${item.getProduto().getCodigo()}"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-9.jpg);"></div></td>
+						        <td class="image-prod"><img width="150" src=${item.getProduto().getUrlFoto()}></img></td>
 						        
 						        <td class="product-name">
 						        	<h3>${item.getProduto().getNome()}</h3>
@@ -85,7 +85,9 @@
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
+						        	<p class="text-center"><a href="/menos-${item.getProduto().getCodigo()}" class="btn btn-danger py-3 px-4">-</a></p>
 					             	<input type="text" name="quantity" class="quantity form-control input-number" value=${item.getQuantidade()} min="1" max="100">
+					          		<p class="text-center"><a href="/mais-${item.getProduto().getCodigo()}" class="btn btn-success py-3 px-4">+</a></p>
 					          	</div>
 					          </td>
 						        
@@ -109,7 +111,7 @@
     					</p> 				
     					
     				</div>
-    				<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Prosseguir para o Pagamento</a></p>
+    				<p class="text-center"><a href="../checkout" class="btn btn-primary py-3 px-4">Prosseguir para o Pagamento</a></p>
     			</div>
     		</div>
 			</div>

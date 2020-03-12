@@ -62,9 +62,9 @@ public class DBService {
         Fornecedor forn2 = new Fornecedor(null, "Fornecedor2", "64.325.527/0001-79", "forn2@gmail.com", ender2);
         fornecedorRepository.saveAll(Arrays.asList(forn1, forn2));
 
-        Produto prod1 = new Produto(null, "Camisa1", "url-da-imagem-aqui", 150.0, 80.0, "imagine uma descrição aqui");
-        Produto prod2 = new Produto(null, "Camisa2", "url-da-imagem-aqui", 120.0, 40.0, "imagine uma descrição aqui");
-        Produto prod3 = new Produto(null, "Camisa3", "url-da-imagem-aqui", 180.0, 100.0, "imagine uma descrição aqui");
+        Produto prod1 = new Produto(null, "Camisa1", "https://soupain.com.br/image/cache/catalog/UNI%202019/kami-site-1200x1080.png", 150.0, 80.0, "imagine uma descrição aqui");
+        Produto prod2 = new Produto(null, "Camisa2", "https://soupain.com.br/image/cache/catalog/UNI%202019/thaiga-site-1200x1080.png", 120.0, 40.0, "imagine uma descrição aqui");
+        Produto prod3 = new Produto(null, "Camisa3", "https://soupain.com.br/image/cache/catalog/Casual/Casual-Preta-500x500-04-1200x1080.png", 180.0, 100.0, "imagine uma descrição aqui");
         prod1.setFornecedor(forn1);
         prod1.setFornecedor(forn2);
         prod2.setFornecedor(forn1);

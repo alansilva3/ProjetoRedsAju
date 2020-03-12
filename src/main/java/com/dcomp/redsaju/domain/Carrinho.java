@@ -63,6 +63,61 @@ public class Carrinho implements Serializable {
         this.itens.add(item);
     }
     
+    public void removeItem(Produto p) {
+    	
+    	List<ItemProduto> produtos = new ArrayList<>();
+  
+        
+        for(int i = 0; i < itens.size(); i++) {
+        	ItemProduto ip = itens.get(i);
+        	
+        	if(!ip.getProduto().equals(p)) {
+        		produtos.add(itens.get(i));
+        	}
+        	
+        }
+        
+        this.itens = produtos;
+    }
+    
+public void maisItem(Produto p) {  	
+  
+        
+        for(int i = 0; i < itens.size(); i++) {
+        	ItemProduto ip = itens.get(i);
+        	
+        	if(ip.getProduto().equals(p)) {
+        		int novaQtd = ip.getQuantidade()+1;
+        		
+        		
+        		ip.setQuantidade(novaQtd);
+        		
+        		
+        	}
+        	
+        }
+        
+}
+
+public void menosItem(Produto p) {
+	
+	for(int i = 0; i < itens.size(); i++) {
+    	ItemProduto ip = itens.get(i);
+    	
+    	if(ip.getProduto().equals(p)) {
+    		int novaQtd = ip.getQuantidade()-1;
+    		
+    		if(novaQtd <= 0) {
+    			this.removeItem(p);
+    		}else {
+    			ip.setQuantidade(novaQtd);
+    		}
+    		
+    	}
+    	
+    }
+}
+    
     public double getPreco() {
     	double preco = 0;
         for(int i = 0; i < this.itens.size(); i++) {

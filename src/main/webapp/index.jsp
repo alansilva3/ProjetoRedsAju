@@ -39,7 +39,7 @@
 	        <ul class="navbar-nav ml-auto">
 
 	          <li class="nav-item cta cta-colored"><a href="/cart" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getQuantidade()}]</a></li>
-			  <li class="nav-item cta cta-colored-login"><a href="./login/login.html" class="nav-link">Login</a></li>
+			  <li class="nav-item cta cta-colored-login"><a href="/login/" class="nav-link">Login</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -79,7 +79,7 @@
     		<c:forEach var="produto" items="${produtos}">
         	<div class="col-sm col-md-6 col-lg ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="../images/product-9.jpg"
+                    <a href="#" class="img-prod"><img class="img-fluid" src=${produto.urlFoto}
                                                       alt="Colorlib Template"></a>
                     <div class="text py-3 px-3">
       
