@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="com.dcomp.redsaju.domain.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="com.dcomp.redsaju.domain.*" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,12 +34,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a style="color: black;" class="navbar-brand" href="index.html">RedsAju</a>
+	      <a style="color: black;" class="navbar-brand" href="/">RedsAju</a>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 
-	          <li class="nav-item cta cta-colored"><a style="color: black;" href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a style="color: black;" href="/cart" class="nav-link"><span class="icon-shopping_cart"></span>[${carrinho.getQuantidade()}]</a></li>
 			  <li class="nav-item cta cta-colored-login"><a href="#" style="color: black;" class="nav-link">Login</a></li>
 	        </ul>
 	      </div>
@@ -70,33 +72,42 @@
         <div class="row justify-content-center">
           <div class="col-xl-8 ftco-animate">
 						<form action="#" class="billing-form bg-light p-3 p-md-5">
-							<h3 class="mb-4 billing-heading">Dados da Cobran√ßa</h3>
+							<h3 class="mb-4 billing-heading">Dados da CobranÁa</h3>
 	          	<div class="row align-items-end">
-	          		<div class="col-md-6">
+	          		<div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="firstname">Nome</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input required type="text" name="nome" class="form-control" placeholder="">
 	                </div>
 	              </div>
-	              <div class="col-md-6">
+	              <div class="col-md-12">
 	                <div class="form-group">
-	                	<label for="lastname">Sobrenome</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                	<label for="emailaddress">CPF</label>
+	                  <input required type="text" name="cpf" class="form-control" placeholder="">
 	                </div>
                 </div>
+	              <div class="col-md-12">
+	                <div class="form-group">
+	                	<label for="emailaddress">EndereÁo de Email</label>
+	                  <input required type="text" name="email" class="form-control" placeholder="">
+	                </div>
+                </div>
+                <div class="col-md-12">
+	                <div class="form-group">
+	                	<label for="emailaddress">Data de Nascimento</label>
+	                  <input required type="date" name="data-nascimento" class="form-control" placeholder="">
+	                </div>
+                </div>           
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
 		            		<label for="country">Estado</label>
 		            		<div class="select-wrap">
 		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
+		                  <select name="estado" id="" class="form-control">
 		                  	<option value="">Sergipe</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Philippines</option>
-		                    <option value="">South Korea</option>
-		                    <option value="">Hongkong</option>
-		                    <option value="">Japan</option>
+		                    <option value="">Bahia</option>
+		                    <option value="">S„o Paulo</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -104,52 +115,47 @@
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="streetaddress">Endere√ßo</label>
-	                  <input type="text" class="form-control" placeholder="Nome da rua e n√∫mero da casa">
+	                	<label for="streetaddress">EndereÁo</label>
+	                  <input required type="text" name="logradouro" class="form-control" placeholder="Nome da rua e n˙mero da casa">
 	                </div>
+		           	            
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Apartamento, suite, unidade, etc: (opcional)">
+		            		<label for="postcodezip">Bairro</label>
+	                  <input required type="text" name="bairro" class="form-control" placeholder="">
 	                </div>
 		            </div>
-		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="towncity">Cidade</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input required type="text" name="cidade" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 		            		<label for="postcodezip">CEP</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input required type="text" name="cep" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Telefone</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input required type="text" name="telefone" class="form-control" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="emailaddress">Endere√ßo de Email</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                	<label for="phone">N˙mero do Cart„o</label>
+	                  <input required type="text" name="cartao" class="form-control" placeholder="">
 	                </div>
-                </div>
+	              </div>
+	              
                 <div class="w-100"></div>
-                <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-										  <label class="mr-3"><input type="radio" name="optradio"> Criar uma Conta? </label>
-										  <label><input type="radio" name="optradio"> Enviar para um endere√ßo diferente</label>
-										</div>
-									</div>
-                </div>
+                
 	            </div>
-	          </form><!-- END -->
+	          <!-- END -->
 
 
 
@@ -158,27 +164,19 @@
 	          		<div class="cart-detail cart-total bg-light p-3 p-md-4">
 	          			<h3 class="billing-heading mb-4">Total do Carrinho</h3>
 	          			<p class="d-flex">
-    						<span>Subtotal</span>
-    						<span>R$ 259,80</span>
-    					</p>
-    					<p class="d-flex">
-    						<span>Entrega</span>
-    						<span>R$ 0,00 (Frete Gr√°tis)</span>
-    					</p>
-    					<hr>
-    					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>R$ 259,80</span>
+    						<span>R$ ${carrinho.getPreco()}</span>
     					</p>
+    					
 								</div>
 	          	</div>
 	          	<div class="col-md-6">
 	          		<div class="cart-detail bg-light p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">M√©todo de Pagamento</h3>
+	          			<h3 class="billing-heading mb-4">MÈtodo de Pagamento</h3>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Boleto Banc√°rio</label>
+											   <label><input type="radio" name="optradio" class="mr-2"> Boleto Banc·rio</label>
 											</div>
 										</div>
 									</div>
@@ -186,7 +184,7 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Cart√£o de Cr√©dito</label>
+											   <label><input type="radio" name="optradio" class="mr-2"> Cart„o de CrÈdito</label>
 											</div>
 										</div>
 									</div>
@@ -194,16 +192,17 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Cart√£o de D√©bito</label>
+											   <label><input type="radio" name="optradio" class="mr-2"> Cart„o de DÈdito</label>
 											</div>
 										</div>
 									</div>
 
-									<p><a href="#"class="btn btn-primary py-3 px-4">Fazer o pedido</a></p>
+									<p><a href="/pagar"class="btn btn-primary py-3 px-4">Fazer o pedido</a></p>
 								</div>
 	          	</div>
 	          </div>
           </div> <!-- .col-md-8 -->
+          </form>
         </div>
       </div>
     </section> <!-- .section -->

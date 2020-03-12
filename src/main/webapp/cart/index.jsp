@@ -75,7 +75,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="/remove-${item.getProduto().getCodigo()}"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/product-9.jpg);"></div></td>
+						        <td class="image-prod"><img width="150" src=${item.getProduto().getUrlFoto()}></img></td>
 						        
 						        <td class="product-name">
 						        	<h3>${item.getProduto().getNome()}</h3>
@@ -111,7 +111,7 @@
     					</p> 				
     					
     				</div>
-    				<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Prosseguir para o Pagamento</a></p>
+    				<p class="text-center"><a href="../checkout" class="btn btn-primary py-3 px-4">Prosseguir para o Pagamento</a></p>
     			</div>
     		</div>
 			</div>
