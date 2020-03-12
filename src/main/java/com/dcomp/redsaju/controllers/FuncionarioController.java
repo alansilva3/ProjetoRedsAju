@@ -1,6 +1,5 @@
 package com.dcomp.redsaju.controllers;
 
-import com.dcomp.redsaju.domain.Funcionario;
 import com.dcomp.redsaju.domain.Produto;
 import com.dcomp.redsaju.services.FuncionarioService;
 import com.dcomp.redsaju.services.ProdutoService;
@@ -17,14 +16,11 @@ import java.util.List;
 public class FuncionarioController {
 
     @Autowired
-    private FuncionarioService service;
-    @Autowired
     private ProdutoService produtoService;
 
     @GetMapping("/")
     public ModelAndView welcome() {
         List<Produto> produtos = produtoService.findAll();
-        List<Funcionario> funcionarios = service.findAll();
 
         ModelAndView model = new ModelAndView("/funcionario/index.jsp");
         model.addObject("produtos", produtos);
