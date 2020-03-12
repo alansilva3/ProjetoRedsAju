@@ -39,7 +39,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a style="color: black;" class="navbar-brand" href="index.html">RedsAju</a>
+            <a style="color: black;" class="navbar-brand" href="/">RedsAju</a>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
